@@ -23,5 +23,12 @@ namespace TaxCalc.Repositories
 
             return rate; 
         }
+
+        public bool Update(Rate rate)
+        {
+            Rate updatedRate = _rates.FirstOrDefault(r => r.Id == rate.Id);
+            updatedRate.TimeInterval.EndDate = rate.TimeInterval.EndDate;
+            return true;
+        }
     }
 }

@@ -27,20 +27,8 @@ namespace TaxCalc.TaxCalculatorClient
         /// <param name="commodity">Commodity</param>
         public double GetStandardTaxRate(Commodity commodity)
         {
-            try
-            { 
-                var standardRate = _customRateService.GetStandardRate(commodity);
-                if(standardRate == null)
-                {
-
-                }
-                return standardRate;
-            }
-            catch (Exception ex)
-            {
-                throw new NotFoundItemException($"{commodity}", ex.Message);
-            }
-
+            var standardRate = _customRateService.GetStandardRate(commodity);
+            return standardRate;
         }
 
         /// <summary>

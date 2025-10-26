@@ -55,8 +55,24 @@ namespace TaxCalc.Services
                 return _customRateRepo.Add(commodity, rate);
             }
 
+            FinishActiveInterval(commodity, currentTimeInterval.StartDate);
             return _customRateRepo.Update(commodity, rate);
             //end of trasaction 
+        }
+
+        /// <summary>
+        /// Finish active Interval
+        /// </summary>
+        /// <param name="commodity">Commodity</param>
+        /// <param name="endDate">End Date</param>
+        private void FinishActiveInterval(Commodity commodity, DateTime endDate)
+        {
+            CustomRate customRate = _customRateRepo.GetByCommodity(commodity);
+            Rate rate = customRate.Rates.Last();
+            rate.TimeInterval.EndDate = endDate;
+            //_rateRepo.Update(rate); if we implement db
+            _customRateRepo.UpdateLastRate(commodity, rate); //null because we already updated rate list
+
         }
 
         /// <summary>

@@ -10,5 +10,6 @@ namespace TaxCalc.Repositories.Interfaces
     public interface IRateRepository
     {
         Rate Add(Rate rate);
+        bool Update(Rate rate);
     }
 }

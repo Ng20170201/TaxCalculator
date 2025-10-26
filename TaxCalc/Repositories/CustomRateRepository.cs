@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TaxCalc.Entity;
 using TaxCalc.Enums;
 using TaxCalc.Repositories.Interfaces;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TaxCalc.Repositories
 {    
@@ -13,7 +14,6 @@ namespace TaxCalc.Repositories
     public class CustomRateRepository : ICustomRateRepository
     {
         private readonly Dictionary<Commodity,List<Rate>> _customRates = new Dictionary<Commodity, List<Rate>>();
-
         public CustomRate Add(Commodity commodity, Rate rate)
         {
             _customRates[commodity] = new List<Rate>() { rate };
@@ -40,6 +40,14 @@ namespace TaxCalc.Repositories
         {
             _customRates[commodity].Add(rate);
             return new CustomRate(commodity, _customRates[commodity]);
+        }
+
+        public bool UpdateLastRate(Commodity commodity, Rate rate)
+        {
+            Rate updatedRate = _customRates[commodity].Last();
+            updatedRate.TimeInterval.EndDate = rate.TimeInterval.EndDate;
+
+            return true;
         }
     }
 }

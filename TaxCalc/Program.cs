@@ -25,27 +25,42 @@ var serviceProvider = services.BuildServiceProvider();
 var taxCalculator = serviceProvider.GetRequiredService<ITaxCalculator>();
 var taxCalculator2 = serviceProvider.GetRequiredService<ITaxCalculator>();
 
+Console.WriteLine("1. ");
+Console.WriteLine("Set custom rate " + Commodity.Transport + " 0.11 " + "Time: "+DateTime.UtcNow);
 taxCalculator.SetCustomTaxRate(Commodity.Transport, 0.11);
+Thread.Sleep(1000);
+Console.WriteLine("Set custom rate " + Commodity.Alcohol + " 0.12 " + "Time: " + DateTime.UtcNow);
 taxCalculator.SetCustomTaxRate(Commodity.Alcohol, 0.12);
+Thread.Sleep(1000);
+Console.WriteLine("Set custom rate " + Commodity.Transport + " 0.13 " + "Time: " + DateTime.UtcNow);
 taxCalculator.SetCustomTaxRate(Commodity.Transport, 0.13);
 Thread.Sleep(5000);
+Console.WriteLine("Set custom rate " + Commodity.Transport + " 0.14 " + "Time: " + DateTime.UtcNow);
 taxCalculator.SetCustomTaxRate(Commodity.Transport, 0.14);
 
+Console.WriteLine("Transport 1 standard rate " + taxCalculator.GetStandardTaxRate(Commodity.Transport));
+Console.WriteLine("Transport 1 Current rate " + taxCalculator.GetCurrentTaxRate(Commodity.Transport));
+Console.WriteLine("Transport 1 at " + DateTime.UtcNow.AddSeconds(-5) + " " + taxCalculator.GetTaxRateForDateTime(Commodity.Transport, DateTime.UtcNow.AddSeconds(-5)));
+
+Console.WriteLine("2. ");
+Thread.Sleep(1000);
+Console.WriteLine("Set custom rate " + Commodity.Transport + " 0.21 " + "Time: " + DateTime.UtcNow);
 taxCalculator2.SetCustomTaxRate(Commodity.Transport, 0.21);
+Thread.Sleep(1000);
+Console.WriteLine("Set custom rate " + Commodity.Alcohol + " 0.22 " + "Time: " + DateTime.UtcNow);
 taxCalculator2.SetCustomTaxRate(Commodity.Alcohol, 0.22);
+Thread.Sleep(1000);
+Console.WriteLine("Set custom rate " + Commodity.Transport + " 0.23 " + "Time: " + DateTime.UtcNow);
 taxCalculator2.SetCustomTaxRate(Commodity.Transport, 0.23);
 Thread.Sleep(5000);
+Console.WriteLine("Set custom rate " + Commodity.Transport + " 0.24 " + "Time: " + DateTime.UtcNow);
 taxCalculator2.SetCustomTaxRate(Commodity.Transport, 0.24);
 
-Console.WriteLine("Transport standard rate " + taxCalculator.GetStandardTaxRate(Commodity.Transport));
-Console.WriteLine("Transport Current rate " + taxCalculator.GetCurrentTaxRate(Commodity.Transport));
-Console.WriteLine("Transport Before 5 sec rate " + taxCalculator.GetTaxRateForDateTime(Commodity.Transport, DateTime.UtcNow.AddSeconds(-5)));
+Console.WriteLine("Transport 2 standard rate " + taxCalculator2.GetStandardTaxRate(Commodity.Transport));
+Console.WriteLine("Transport 2 Current rate " + taxCalculator2.GetCurrentTaxRate(Commodity.Transport));
+Console.WriteLine("Transport 2  at " + DateTime.UtcNow.AddSeconds(-5) + " " + taxCalculator2.GetTaxRateForDateTime(Commodity.Transport, DateTime.UtcNow.AddSeconds(-5)));
 
-Console.WriteLine("Transport standard rate " + taxCalculator2.GetStandardTaxRate(Commodity.Transport));
-Console.WriteLine("Transport Current rate " + taxCalculator2.GetCurrentTaxRate(Commodity.Transport));
-Console.WriteLine("Transport Before 5 sec rate " + taxCalculator2.GetTaxRateForDateTime(Commodity.Transport, DateTime.UtcNow.AddSeconds(-5)));
-
-
+Console.WriteLine("Transport 1 at " + DateTime.UtcNow.AddSeconds(-5) + " " + taxCalculator.GetTaxRateForDateTime(Commodity.Transport, DateTime.UtcNow.AddSeconds(-5)));
 
 /*
  * NOTE:

@@ -280,3 +280,4 @@ C:\Users\Nikola\OneDrive\Radna površina\Nikola\Nikola Projekti\TaxCalc\Test\bin
 C:\Users\Nikola\OneDrive\Radna površina\Nikola\Nikola Projekti\TaxCalc\Test\bin\Debug\net9.0\Microsoft.Extensions.Caching.Memory.dll
 C:\Users\Nikola\OneDrive\Radna površina\Nikola\Nikola Projekti\TaxCalc\Test\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\Nikola\OneDrive\Radna površina\Nikola\Nikola Projekti\TaxCalc\Test\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
+C:\Users\Nikola\OneDrive\Radna površina\Nikola\Nikola Projekti\TaxCalc\Test\obj\Debug\net9.0\Test.sourcelink.json

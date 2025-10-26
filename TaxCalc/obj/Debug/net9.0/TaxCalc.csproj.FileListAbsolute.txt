@@ -38,3 +38,4 @@ C:\Users\Nikola\OneDrive\Radna površina\Nikola\Nikola Projekti\TaxCalc\TaxCalc\
 C:\Users\Nikola\OneDrive\Radna površina\Nikola\Nikola Projekti\TaxCalc\TaxCalc\bin\Debug\net9.0\Microsoft.Extensions.Caching.Memory.dll
 C:\Users\Nikola\OneDrive\Radna površina\Nikola\Nikola Projekti\TaxCalc\TaxCalc\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\Nikola\OneDrive\Radna površina\Nikola\Nikola Projekti\TaxCalc\TaxCalc\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
+C:\Users\Nikola\OneDrive\Radna površina\Nikola\Nikola Projekti\TaxCalc\TaxCalc\obj\Debug\net9.0\TaxCalc.sourcelink.json

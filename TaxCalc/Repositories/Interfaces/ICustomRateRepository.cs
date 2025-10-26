@@ -15,5 +15,6 @@ namespace TaxCalc.Repositories.Interfaces
         Dictionary<Commodity, List<Rate>> GetAll();
         CustomRate GetByCommodity(Commodity commodity);
         CustomRate Update(Commodity commodity, Rate rate);
+        bool UpdateLastRate(Commodity commodity, Rate value);
     }
 }

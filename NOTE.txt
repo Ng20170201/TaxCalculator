@@ -1,0 +1,42 @@
+I will use a NoSQL database, which is a better choice in this case since I want to represent the data in a Dictionary structure.
+We will also use the Repository pattern — even though it’s not necessary for hardcoded data — I want to prepare for the future, as we’ll eventually store these data in the database related to custom flows.
+
+We’ll create two objects in the database:
+Rate, which will contain a value and a TimeInterval (start date and end date).
+CustomRate, which will contain a Commodity and a List<Rate>.
+
+Example structure:	{
+					 Commodity1: [
+					 	{0.11, 12:00-14:00},
+					 	{0.12, 14:00-15:00},
+					 	{0.11, 15:00-16:00},
+					 ],
+					 Commodity2: [
+					 	{0.21, 12:00-14:00},
+					 	{0.22, 14:00-15:00},
+					 	{0.21, 15:00-16:00},
+					 ]
+					}
+					
+We could have created an additional dictionary for the Rate object, which would look like this: {
+																									Commodity1: {
+																										0.11: [{12:00-14:00}, {15:00-16:00}],
+																										0.12: [{14:00-15:00}]
+																									},
+																									Commodity2: {
+																										0.21: [{12:00-14:00}, {15:00-16:00}],
+																										0.22: [{14:00-15:00}]
+																									}
+																								}
+																								
+However, that wouldn’t make much sense because searching would still require iterating through each Rate, making it functionally the same as the first approach — while also introducing additional complexity in implementation and data storage.
+
+We will create separate interfaces for each repository, although we could have made them generic since methods like Add, Update, Delete, etc., will definitely repeat.
+I will also register the dependencies in the DI container so we can run tests separately for different databases.
+All data are stored in individual repositories to allow mocking the use of a real database.
+We also created a cache service, which is essentially a mocked version of the real service, as it reads data from an in-memory dictionary.
+
+
+I assume the most commonly used functions are:
+		1.GetCurrentTaxRate – it has been optimized since we read it directly from the cache. The data is loaded once and later updated as needed.
+		2.GetTaxRateForDateTime – we load all the data initially and then perform a binary search for faster lookup of the corresponding time interval.2
